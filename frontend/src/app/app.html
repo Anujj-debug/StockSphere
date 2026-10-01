@@ -1,0 +1,24 @@
+<div class="flex h-screen bg-slate-50 text-slate-900 antialiased overflow-hidden font-sans">
+  <!-- Left: Sidebar Navigation -->
+  <app-sidebar
+    [lowStockCount]="lowStockCount()"
+    [inTransitCount]="inTransitCount()"
+    [pendingOrdersCount]="pendingOrdersCount()"
+  ></app-sidebar>
+
+  <!-- Right: Main Content Area -->
+  <div class="flex-1 flex flex-col h-screen min-w-0 overflow-hidden bg-slate-50">
+    <!-- Top Header -->
+    <app-header (refresh)="refreshMetrics()"></app-header>
+
+    <!-- Main View Outlet Container -->
+    <main class="flex-1 overflow-y-auto px-6 py-6">
+      <div class="max-w-7xl mx-auto">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+
+  <!-- Global Toast Notification Center -->
+  <app-toast></app-toast>
+</div>
